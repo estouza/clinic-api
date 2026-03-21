@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agendar</title>
+</head>
+<body>
+
+<h2>Agendar Consulta</h2>
+
+<input id="date" type="date"><br><br>
+<input id="time" type="time"><br><br>
+<input id="cep" placeholder="CEP"><br><br>
+
+<button onclick="agendar()">Agendar</button>
+<button onclick="verLista()">Ver consultas</button>
+
+<script>
+async function agendar() {
+  const token = localStorage.getItem('token');
+
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
+  const cep = document.getElementById('cep').value;
+
+  const res = await fetch('http://localhost:3000/api/appointments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+    body: JSON.stringify({ date, time, cep })
+  });
+
+if (!res.ok) {
+  alert('Erro ao agendar consulta');
+  return;
+}
+
+const data = await res.json();
+const formattedDate = new Date(data.date).toLocaleDateString('pt-BR');
+
+alert(`
+Consulta criada!
+Data: ${formattedDate}
+Hora: ${data.time}
+Endereço: ${data.address}
+Clima: ${data.weather}
+`);
+}
+
+function verLista() {
+  window.location.href = 'lista.html';
+}
+</script>
+
+</body>
+</html>

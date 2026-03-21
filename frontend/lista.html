@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista</title>
+</head>
+<body>
+
+<h2>Consultas</h2>
+
+<ul id="lista"></ul>
+
+<script>
+async function carregar() {
+  const token = localStorage.getItem('token');
+
+  const res = await fetch('hhttp://localhost:3000/api/appointments', {
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
+  });
+
+  const data = await res.json();
+
+  const ul = document.getElementById('lista');
+
+  data.forEach(item => {
+    const li = document.createElement('li');
+    li.innerText = `${item.date} - ${item.time} - ${item.weather}`;
+    ul.appendChild(li);
+  });
+}
+
+carregar();
+</script>
+
+</body>
+</html>

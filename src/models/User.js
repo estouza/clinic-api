@@ -1,4 +1,3 @@
-const e = require('express');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -11,3 +10,5 @@ const userSchema = new mongoose.Schema({
         enum: ['patient', 'secretary']
     }
 }, { timestamps: true });
+
+module.exports = mongoose.model('User', userSchema);

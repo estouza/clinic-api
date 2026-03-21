@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Doctor = require("../models/doctorModel");
 
 const doctorSchema = new mongoose.Schema({
   name: {
