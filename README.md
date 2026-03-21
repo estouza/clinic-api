@@ -1,5 +1,10 @@
 <h1>EN</h1>
 
+## 🌐 Live Application
+
+Backend:
+https://clinic-api-production-cd7e.up.railway.app
+
 # A Brighter Day Clinic
 Smart Appointment Management System for Medical Clinics
 
@@ -30,6 +35,14 @@ Features
 <h2>Objective</h2>
 
 The objective of this project is to apply concepts of web development, authentication, API integration, and application architecture, resulting in a functional system ready for deployment and practical use.
+
+## 📌 How to Run Locally
+
+1. Clone the repository
+2. Install dependencies:
+   npm install
+3. Run the server:
+   node server.js
 
 <h1>PT</h1>
 # Clínica Pro Dia Nascer Feliz
